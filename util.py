@@ -1,5 +1,5 @@
 """
-Authors: (1) Hanzala B. Rehan
+Author(s): 1. Hanzala B. Rehan
 Description: Providing utility functions and classes to facilitate other programs.
 Date created: November 26th, 2024
 Date last modified: November 26th, 2024
