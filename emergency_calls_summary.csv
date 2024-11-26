@@ -1,11 +1,11 @@
 Emergency Location,Time,Preferred Station,Time from Station 1,Time from Station 2
 "(5, 5)",22:00,Fire Station 2,Traffic Blocked,Traffic Blocked
 "(8, 3)",15:00,Fire Station 2,Traffic Blocked,Traffic Blocked
-"(2, 9)",12:00,Fire Station 2,Traffic Blocked,0
+"(2, 9)",12:00,Fire Station 2,Traffic Blocked,4.2962428033849545
 "(4, 4)",15:00,Fire Station 2,Traffic Blocked,Traffic Blocked
 "(7, 2)",15:00,Fire Station 2,Traffic Blocked,Traffic Blocked
-"(3, 6)",12:00,Fire Station 1,0,Traffic Blocked
+"(3, 6)",12:00,Fire Station 1,2.315934504092399,Traffic Blocked
 "(9, 9)",3:00,Fire Station 2,Traffic Blocked,Traffic Blocked
-"(1, 8)",3:00,Fire Station 1,0,Traffic Blocked
+"(1, 8)",3:00,Fire Station 1,8.616096949471208,Traffic Blocked
 "(10, 1)",15:00,Fire Station 2,Traffic Blocked,Traffic Blocked
-"(6, 7)",3:00,Fire Station 1,0,Traffic Blocked
+"(6, 7)",3:00,Fire Station 1,6.568158716206887,Traffic Blocked

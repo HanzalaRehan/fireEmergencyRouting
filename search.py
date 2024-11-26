@@ -32,15 +32,16 @@ def astar_first_search(road, start, goal, time):
         if frontier.empty():
             raise Exception("No solution found")
 
-        node = frontier.remove()  # Correctly assign `node` here
+        node = frontier.remove()
 
         if node.state == goal:
             path = []
+            cost = node.cost
             while node.parent is not None:
                 path.append(node.state)
                 node = node.parent
             path.reverse()
-            return node.cost, path  # Return the final cost from the goal node
+            return cost, path  # Return the final cost from the goal node
 
         explored_states.add(node.state)
 

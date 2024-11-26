@@ -65,8 +65,8 @@ def main():
             "Emergency Location": loc,
             "Time": time,
             "Preferred Station": preferred_station,
-            "Time from Station 1": time1,
-            "Time from Station 2": time2
+            "Time from Station 1": str(time1),
+            "Time from Station 2": str(time2)
         })
 
     # Create a pandas DataFrame from the collected data

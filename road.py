@@ -44,7 +44,7 @@ class Roads:
         # Add the 'End' states and their corresponding costs
         for _, row in df_start.iterrows():
             end_state = ast.literal_eval(row["End"])
-            cost = 100 / row["Speed"]
+            cost = 10 / row["Speed"]
             next_states.append((end_state, cost))
 
         # Filter for rows where 'End' matches the current state and time matches
@@ -53,7 +53,7 @@ class Roads:
         # Add the 'Start' states and their corresponding costs
         for _, row in df_end.iterrows():
             start_state = ast.literal_eval(row["Start"])
-            cost = 100 / row["Speed"]
+            cost = 10 / row["Speed"]
             next_states.append((start_state, cost))
 
         return next_states
