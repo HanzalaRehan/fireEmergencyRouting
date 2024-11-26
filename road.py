@@ -6,6 +6,7 @@ Date last modified: November 26th, 2024
 """
 
 import pandas as pd  # Importing pandas for data manipulation and analysis
+import ast
 
 
 class Roads:
@@ -35,11 +36,25 @@ class Roads:
             next_states (list): A list of tuples containing the end state and cost of traveling to it.
                                 Each tuple is in the form (state, cost).
         """
-        # Filter the DataFrame for rows matching the current state and time
-        df = self.DF[(self.DF['Start'] == state) & (self.DF['Time'] == time)]
         next_states = []  # Initialize a list to hold the next states and their costs
-        for _, row in df.iterrows():
-            state = row["End"]  # Retrieve the end state
-            cost = 1 / row["Speed"]  # Calculate the cost as the inverse of speed (time taken)
-            next_states.append((state, cost))  # Append the state and cost as a tuple
+
+        # Filter for rows where 'Start' matches the current state and time matches
+        df_start = self.DF[(self.DF['Start'] == str(state)) & (self.DF['Time'] == time)]
+
+        # Add the 'End' states and their corresponding costs
+        for _, row in df_start.iterrows():
+            end_state = ast.literal_eval(row["End"])
+            cost = 100 / row["Speed"]
+            next_states.append((end_state, cost))
+
+        # Filter for rows where 'End' matches the current state and time matches
+        df_end = self.DF[(self.DF['End'] == str(state)) & (self.DF['Time'] == time)]
+
+        # Add the 'Start' states and their corresponding costs
+        for _, row in df_end.iterrows():
+            start_state = ast.literal_eval(row["Start"])
+            cost = 100 / row["Speed"]
+            next_states.append((start_state, cost))
+
         return next_states
+

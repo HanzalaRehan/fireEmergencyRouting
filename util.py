@@ -131,7 +131,3 @@ def cumulative_cost_function(node, goal):
     """
     cost = manhattan_distance(node, goal) + node.cost
     return cost
-
-
-def get_next_node(state):
-    pass

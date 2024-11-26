@@ -13,41 +13,38 @@ from road import Roads
 def astar_first_search(road, start, goal, time):
     """
     Desc: Implements A* Search to find the shortest path in the maze.
-          A* uses a combination of the actual path cost and a heuristic to efficiently find the optimal solution.
     Parameters:
         road (Roads): An instance of the Roads class.
-        start (tuple): The starting position as (row, col).
-        goal (tuple): The goal position as (row, col).
-        time (str): time of emergency, format: hr:mm.
-    returns:
+        start (str): The starting road segment.
+        goal (str): The goal road segment.
+        time (str): Time of the search, format: hr:mm.
+    Returns:
         (tuple): Total path cost from start to goal, and a list of all intersections taken.
     """
-    start = CostNode(state=start, parent=None, cost=0)  # Cost is initialized to 0
+    start_node = CostNode(state=start, parent=None, cost=0)
     func = cumulative_cost_function
-    frontier = PriorityQueueFrontier(func, goal)  # Frontier with priority queue
-    frontier.add(start)
+    frontier = PriorityQueueFrontier(func, goal)
+    frontier.add(start_node)
 
     explored_states = set()
 
     while True:
         if frontier.empty():
-            raise Exception("No solution")
+            raise Exception("No solution found")
 
-        node = frontier.remove()
+        node = frontier.remove()  # Correctly assign `node` here
 
         if node.state == goal:
             path = []
-            path_cost = 0
             while node.parent is not None:
                 path.append(node.state)
-                path_cost += node.cost
                 node = node.parent
             path.reverse()
-            return path_cost, path
+            return node.cost, path  # Return the final cost from the goal node
 
         explored_states.add(node.state)
 
-        for state, cost in road.get_next_states(node.start, time):
-            if not frontier.contains_state(state) and state not in explored_states:
-                child = CostNode(state=state, parent=node, cost=cost)
+        for state, cost in road.get_next_states(node.state, time):
+            if state not in explored_states and not frontier.contains_state(state):
+                child = CostNode(state=state, parent=node, cost=node.cost + cost)
                 frontier.add(child)
